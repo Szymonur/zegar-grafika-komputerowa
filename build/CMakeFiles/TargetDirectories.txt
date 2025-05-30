@@ -1,0 +1,3 @@
+/Users/szymon/Documents/zegar/build/CMakeFiles/MechanicalClock.dir
+/Users/szymon/Documents/zegar/build/CMakeFiles/edit_cache.dir
+/Users/szymon/Documents/zegar/build/CMakeFiles/rebuild_cache.dir
