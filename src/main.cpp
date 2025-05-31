@@ -3,6 +3,8 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include "tiny_gltf.h"
+#include "model_loader.h"
 
 #include <iostream>
 #include <fstream>
@@ -18,6 +20,7 @@ std::string loadShaderSource(const char* filepath) {
     buf << file.rdbuf();
     return buf.str();
 }
+
 
 
 GLuint compileShader(const char* path, GLenum type) {
@@ -100,6 +103,7 @@ int main() {
         std::cerr << "GLAD init failed\n";
         return -1;
     }
+    Object woodenClock = loadModelFromGLTF("../assets/wooden_clock/scene.gltf");
 
     auto gear1Vertices = generateGear(0.3f, 20, 0.05f); // większe koło
     auto gear2Vertices = generateGear(0.2f, 15, 0.04f); // mniejsze koło
@@ -207,46 +211,57 @@ while (!glfwWindowShouldClose(window)) {
     GLint viewLoc = glGetUniformLocation(shaderProgram, "view");
     GLint projLoc = glGetUniformLocation(shaderProgram, "projection");
 
-    // Obracamy koła – jedno w prawo, drugie w lewo (z różną prędkością)
-    glm::mat4 gear1Model = glm::rotate(glm::mat4(1.0f), currentTime, glm::vec3(0, 0, -1));
-    glm::mat4 gear2Model = glm::translate(glm::mat4(1.0f), glm::vec3(0.6f, 0.0f, 0.0f)); // obok pierwszego
-    gear2Model = glm::rotate(gear2Model, -currentTime * 2.0f, glm::vec3(0, 0, -1));
-
-    // Gear 1 (szare)
-    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(gear1Model));
-    glUniform3f(colorLoc, 0.5f, 0.5f, 0.5f);
-    glBindVertexArray(gear1VAO);
-    glDrawArrays(GL_TRIANGLES, 0, gear1Vertices.size() / 3);
-
-    // Gear 2 (ciemniejsze)
-    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(gear2Model));
-    glUniform3f(colorLoc, 0.3f, 0.3f, 0.3f);
-    glBindVertexArray(gear2VAO);
-    glDrawArrays(GL_TRIANGLES, 0, gear2Vertices.size() / 3);
-
-
-
-    // Rysuj sekundnik
-    glBindVertexArray(secVAO);
-    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(secModel));
+    woodenClock.model = glm::mat4(1.0f); // pozycja modelu
+    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(woodenClock.model));
     glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
     glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
-    glUniform3f(colorLoc, 1.0f, 0.0f, 0.0f);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
 
-    // Rysuj minutnik
-    glBindVertexArray(minVAO);
-    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(minModel));
-    glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-    glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
-    glUniform3f(colorLoc, 0.0f, 1.0f, 0.0f);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glBindVertexArray(woodenClock.VAO);
+    glBindTexture(GL_TEXTURE_2D, woodenClock.texture);
+    glDrawElements(GL_TRIANGLES, woodenClock.vertexCount, GL_UNSIGNED_INT, 0);
+    
 
-    // Rysuj godziny
-    glBindVertexArray(hourVAO);
-    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(hourModel));
-    glUniform3f(colorLoc, 0.2f, 0.3f, 1.0f);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+
+    // // Obracamy koła – jedno w prawo, drugie w lewo (z różną prędkością)
+    // glm::mat4 gear1Model = glm::rotate(glm::mat4(1.0f), currentTime, glm::vec3(0, 0, -1));
+    // glm::mat4 gear2Model = glm::translate(glm::mat4(1.0f), glm::vec3(0.6f, 0.0f, 0.0f)); // obok pierwszego
+    // gear2Model = glm::rotate(gear2Model, -currentTime * 2.0f, glm::vec3(0, 0, -1));
+
+    // // Gear 1 (szare)
+    // glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(gear1Model));
+    // glUniform3f(colorLoc, 0.5f, 0.5f, 0.5f);
+    // glBindVertexArray(gear1VAO);
+    // glDrawArrays(GL_TRIANGLES, 0, gear1Vertices.size() / 3);
+
+    // // Gear 2 (ciemniejsze)
+    // glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(gear2Model));
+    // glUniform3f(colorLoc, 0.3f, 0.3f, 0.3f);
+    // glBindVertexArray(gear2VAO);
+    // glDrawArrays(GL_TRIANGLES, 0, gear2Vertices.size() / 3);
+
+
+
+    // // Rysuj sekundnik
+    // glBindVertexArray(secVAO);
+    // glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(secModel));
+    // glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
+    // glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
+    // glUniform3f(colorLoc, 1.0f, 0.0f, 0.0f);
+    // glDrawArrays(GL_TRIANGLES, 0, 3);
+
+    // // Rysuj minutnik
+    // glBindVertexArray(minVAO);
+    // glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(minModel));
+    // glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
+    // glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
+    // glUniform3f(colorLoc, 0.0f, 1.0f, 0.0f);
+    // glDrawArrays(GL_TRIANGLES, 0, 3);
+
+    // // Rysuj godziny
+    // glBindVertexArray(hourVAO);
+    // glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(hourModel));
+    // glUniform3f(colorLoc, 0.2f, 0.3f, 1.0f);
+    // glDrawArrays(GL_TRIANGLES, 0, 3);
 
     glfwSwapBuffers(window);
     glfwPollEvents();

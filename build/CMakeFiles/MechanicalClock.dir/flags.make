@@ -5,7 +5,7 @@
 # compile CXX with /usr/bin/c++
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/szymon/Documents/zegar/src/glad/include -isystem /opt/homebrew/include
+C_INCLUDES = -I/Users/szymon/Documents/zegar/src/glad/include -I/Users/szymon/Documents/zegar/src/external/tinygltf -I/Users/szymon/Documents/zegar/src/external/stb -isystem /opt/homebrew/include
 
 C_FLAGSarm64 =  -arch arm64
 
@@ -13,7 +13,7 @@ C_FLAGS =  -arch arm64
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/szymon/Documents/zegar/src/glad/include -isystem /opt/homebrew/include
+CXX_INCLUDES = -I/Users/szymon/Documents/zegar/src/glad/include -I/Users/szymon/Documents/zegar/src/external/tinygltf -I/Users/szymon/Documents/zegar/src/external/stb -isystem /opt/homebrew/include
 
 CXX_FLAGSarm64 = -std=gnu++17 -arch arm64
 

@@ -15,9 +15,15 @@ link_directories(/opt/homebrew/lib)
 add_executable(MechanicalClock
     src/main.cpp
     src/glad/include/glad.c
+    src/external/tinygltf/tiny_gltf.cc
 )
 
-target_include_directories(MechanicalClock PRIVATE src/glad/include)
+target_include_directories(MechanicalClock PRIVATE 
+    src/glad/include
+    src/external/tinygltf
+    src/external/stb    
+)
+
 
 target_link_libraries(MechanicalClock
     glfw

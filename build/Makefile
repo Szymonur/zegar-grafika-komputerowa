@@ -129,6 +129,30 @@ MechanicalClock/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MechanicalClock.dir/build.make CMakeFiles/MechanicalClock.dir/build
 .PHONY : MechanicalClock/fast
 
+src/external/tinygltf/tiny_gltf.o: src/external/tinygltf/tiny_gltf.cc.o
+.PHONY : src/external/tinygltf/tiny_gltf.o
+
+# target to build an object file
+src/external/tinygltf/tiny_gltf.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MechanicalClock.dir/build.make CMakeFiles/MechanicalClock.dir/src/external/tinygltf/tiny_gltf.cc.o
+.PHONY : src/external/tinygltf/tiny_gltf.cc.o
+
+src/external/tinygltf/tiny_gltf.i: src/external/tinygltf/tiny_gltf.cc.i
+.PHONY : src/external/tinygltf/tiny_gltf.i
+
+# target to preprocess a source file
+src/external/tinygltf/tiny_gltf.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MechanicalClock.dir/build.make CMakeFiles/MechanicalClock.dir/src/external/tinygltf/tiny_gltf.cc.i
+.PHONY : src/external/tinygltf/tiny_gltf.cc.i
+
+src/external/tinygltf/tiny_gltf.s: src/external/tinygltf/tiny_gltf.cc.s
+.PHONY : src/external/tinygltf/tiny_gltf.s
+
+# target to generate assembly for a file
+src/external/tinygltf/tiny_gltf.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MechanicalClock.dir/build.make CMakeFiles/MechanicalClock.dir/src/external/tinygltf/tiny_gltf.cc.s
+.PHONY : src/external/tinygltf/tiny_gltf.cc.s
+
 src/glad/include/glad.o: src/glad/include/glad.c.o
 .PHONY : src/glad/include/glad.o
 
@@ -186,6 +210,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... MechanicalClock"
+	@echo "... src/external/tinygltf/tiny_gltf.o"
+	@echo "... src/external/tinygltf/tiny_gltf.i"
+	@echo "... src/external/tinygltf/tiny_gltf.s"
 	@echo "... src/glad/include/glad.o"
 	@echo "... src/glad/include/glad.i"
 	@echo "... src/glad/include/glad.s"

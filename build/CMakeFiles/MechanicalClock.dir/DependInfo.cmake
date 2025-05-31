@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/szymon/Documents/zegar/src/glad/include/glad.c" "CMakeFiles/MechanicalClock.dir/src/glad/include/glad.c.o" "gcc" "CMakeFiles/MechanicalClock.dir/src/glad/include/glad.c.o.d"
+  "/Users/szymon/Documents/zegar/src/external/tinygltf/tiny_gltf.cc" "CMakeFiles/MechanicalClock.dir/src/external/tinygltf/tiny_gltf.cc.o" "gcc" "CMakeFiles/MechanicalClock.dir/src/external/tinygltf/tiny_gltf.cc.o.d"
   "/Users/szymon/Documents/zegar/src/main.cpp" "CMakeFiles/MechanicalClock.dir/src/main.cpp.o" "gcc" "CMakeFiles/MechanicalClock.dir/src/main.cpp.o.d"
   )
 

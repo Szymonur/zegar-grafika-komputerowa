@@ -85,12 +85,12 @@ clean: CMakeFiles/MechanicalClock.dir/clean
 CMakeFiles/MechanicalClock.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MechanicalClock.dir/build.make CMakeFiles/MechanicalClock.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MechanicalClock.dir/build.make CMakeFiles/MechanicalClock.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/szymon/Documents/zegar/build/CMakeFiles --progress-num=1,2,3 "Built target MechanicalClock"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/szymon/Documents/zegar/build/CMakeFiles --progress-num=1,2,3,4 "Built target MechanicalClock"
 .PHONY : CMakeFiles/MechanicalClock.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/MechanicalClock.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/szymon/Documents/zegar/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/szymon/Documents/zegar/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/MechanicalClock.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/szymon/Documents/zegar/build/CMakeFiles 0
 .PHONY : CMakeFiles/MechanicalClock.dir/rule
@@ -102,7 +102,7 @@ MechanicalClock: CMakeFiles/MechanicalClock.dir/rule
 # codegen rule for target.
 CMakeFiles/MechanicalClock.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MechanicalClock.dir/build.make CMakeFiles/MechanicalClock.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/szymon/Documents/zegar/build/CMakeFiles --progress-num=1,2,3 "Finished codegen for target MechanicalClock"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/szymon/Documents/zegar/build/CMakeFiles --progress-num=1,2,3,4 "Finished codegen for target MechanicalClock"
 .PHONY : CMakeFiles/MechanicalClock.dir/codegen
 
 # clean rule for target.

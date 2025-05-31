@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/MechanicalClock.dir/src/external/tinygltf/tiny_gltf.cc.o"
+  "CMakeFiles/MechanicalClock.dir/src/external/tinygltf/tiny_gltf.cc.o.d"
   "CMakeFiles/MechanicalClock.dir/src/glad/include/glad.c.o"
   "CMakeFiles/MechanicalClock.dir/src/glad/include/glad.c.o.d"
   "CMakeFiles/MechanicalClock.dir/src/main.cpp.o"
